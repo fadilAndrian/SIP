@@ -20,6 +20,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', [dashboardController::class, 'index']);
+Route::group(['middleware'=>['auth', 'cekrole:admin']], function(){
+	//
+});
+
+Route::group(['middleware'=>['auth', 'cekrole:pegawai']], function(){
+	//
+});
+
+Route::get('/dashboard', [dashboardController::class, 'index'])->name('dashboard');
 Route::get('/data-pegawai', DataPegawai::class);
 Route::get('/create-pegawai', CreatePegawai::class);

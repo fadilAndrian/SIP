@@ -7,9 +7,10 @@
    	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
    	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-   	<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+   	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
    	<!-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script> -->
    	<script src="{{asset('js/app.js')}}" defer></script>
+   	<!-- <script src="{{asset('js/jquery.js')}}" defer></script> -->
 
    	@livewireStyles
 
@@ -21,6 +22,22 @@
    		.btt {
    			box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
    		}
+
+   		#toast {
+			animation: toast .3s forwards;
+		}
+
+		@keyframes toast {
+			from{
+				opacity: 0;
+				transform: translate(100px);
+			}
+
+			to{
+				transform: translateX(0);
+				opacity: 1;
+			}
+		}
    	</style>
 
 </head>
@@ -188,7 +205,7 @@
 	      <!-- /sidebar -->
 
 		  <!-- Header -->
-		  <div class="w-full hidden sm:flex items-center justify-between h-14 text-gray-900 px-16" id="atas">
+		  <div class="w-full hidden sm:flex items-center justify-between h-14 text-gray-900 px-16">
 		    <div class="ml-60 pl-1 font-light text-sm text-gray-500 flex">
 		    	<div>
 		    		<a class="hover:text-blue-900" href="/dashboard">Home</a>
@@ -202,7 +219,19 @@
 		    	<!-- navigasi menu pada header -->
 		    	<div class="ml-2">
 		    		<a class="hover:text-blue-900" href="/data-pegawai">{{'data-pegawai' == Request()->path() ? 'Data Pegawai' : ''}}</a>
-		    		<a class="hover:text-blue-900" href="/create-pegawai">{{'create-pegawai' == Request()->path() ? 'Data Pegawai' : ''}}</a>
+		    		<a class="hover:text-blue-900" href="/data-pegawai">{{'create-pegawai' == Request()->path() ? 'Data Pegawai' : ''}}</a>
+		    	</div>
+
+		    	<div class="ml-2 mt-0.5 
+		    				{{'data-pegawai' == Request()->path() ? 'hidden' : ''}} 
+		    				{{'dashboard' == Request()->path() ? 'hidden' : ''}}">
+		    		<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7" />
+					</svg>
+		    	</div>
+
+		    	<div class="ml-2">
+		    		<a class="hover:text-blue-900 {{'create-pegawai' == Request()->path() ? '' : 'hidden'}}" href="/create-pegawai">{{'create-pegawai' == Request()->path() ? 'Olah Data Pegawai' : ''}}</a>
 		    	</div>
 		    	<!-- /navigasi menu pada header -->
 
@@ -211,15 +240,15 @@
 		    <div class="justify-between py-2 text-lg font-medium text-gray-800">
 		    	<div @mouseleave="open = false" x-data="{open: false}">
 			    	<a href="#" @mouseover="open = true" class="hover:text-blue-800 flex">
-			    	<svg xmlns="http://www.w3.org/2000/svg" :class="{'rotate-180':open, 'rotate-0':!open}" class="self-center mx-2 h-6 w-6 transition-transform duration-200 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+			    	<svg xmlns="http://www.w3.org/2000/svg" :class="{'opacity-0':open, 'transition-opacity opacity-100 duration-700':!open}" class="self-center mx-2 h-6 w-6  transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 					  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
 					</svg>
 					<div x-show="open"
 						 x-transition:enter="transition ease-out duration-100" 
 		                 x-transition:enter-start="transform opacity-0 scale-50" 
 		                 x-transition:enter-end="transform opacity-100 scale-100" 
-		                 x-transition:leave="transition ease-out duration-100" 
-		                 x-transition:leave-start="transform opacity-100 scale-95" 
+		                 x-transition:leave="transition ease-in duration-75" 
+		                 x-transition:leave-start="transform opacity-100 scale-100" 
 		                 x-transition:leave-end="transform opacity-0 scale-50">
 						<p class="">Logout</p>
 					</div>
@@ -241,7 +270,7 @@
 		<!-- /content -->
 		<div x-data="{open : false}" @mouseleave="open = false">
 			<div @mouseover="open = true" :class="{'animate-pulse':open, '':!open}" class="bg-blue-700 h-6 w-6 rounded-full fixed right-5 bottom-5 text-white btt">
-				<a href="#atas">
+				<a href="#">
 					<span>
 						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
 						  <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
@@ -250,7 +279,18 @@
 				</a>
 			</div>
 		</div>
+
 	</div>
+
+	<script>
+		$(document).ready(function() {
+	      // saat tombol remove dklik control group akan dihapus 
+	      $("body").on("click",".remove",function(){ 
+	          $(this).parents(".toast").remove();
+	      });
+	    });
+	</script>
+
 	@livewireScripts
 </body>
 </html>

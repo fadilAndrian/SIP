@@ -2,7 +2,7 @@
 <div class="w-full h-full">
 
 	<div class="hidden sm:block" aria-hidden="true">
-	  <div class="ml-72 pl-5 py-5 mt-10 mr-10">
+	  <div class="ml-72 px-5 py-5 mt-10 mr-10">
 	  	<div class="text-gray-700 text-3xl mb-1 font-bold">
       		Pegawai
       	</div>
@@ -124,7 +124,7 @@
 	<!-- /data diri -->
 
 	<div class="hidden sm:block" aria-hidden="true">
-	  <div class="ml-72 pl-5 py-5 mt-10 mr-10">
+	  <div class="ml-72 px-5 py-5 mt-10 mr-10">
 	  	<div class="text-gray-700 text-3xl mb-1 font-bold">
       		Keluarga
       	</div>
@@ -181,19 +181,22 @@
 	              <div class="col-span-6 sm:col-span-1">
 	              </div>
 	              <div class="col-span-6 sm:col-span-4">
-	              	<div class="grid gap-6">
-		              	<div>
-			                <label for="first-name" class="block text-sm font-medium text-gray-700">Nama Anak 1</label>
-			                <input type="text" wire:model="nama_anak" id="first-name" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full shadow-sm text-sm font-medium rounded-xl outline-none">
+	              	<div class="grid gap-0">
+
+	              		<div>
+							<label for="first-name" class="block text-sm font-medium text-gray-700">Nama Anak 1</label>
+	              			<input type="text" wire:model="nama_anak" id="first-name" autocomplete="given-name" class="mt-1 mb-6 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full shadow-sm text-sm font-medium rounded-xl outline-none">
 		              	</div>
 
-		              	<div class="w-full flex">
-			                <a style="cursor: pointer;" href="#" wire:click="#" class="button mt-1 text-blue-800 mx-auto hover:text-indigo-400 focus:text-gray-500">
+		              	<!-- tombol tambah anak -->
+		              	<div class="w-full flex" >
+			                <a wire:clicl="tambahAnak()" class="button text-blue-800 hover:text-indigo-400 mx-auto mt-1 focus:text-gray-500">
 			                	<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 								  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
 								</svg>
 			                </a>
 		              	</div>
+		              	<!-- /tombol tambah anak -->
 
 	              	</div>
 	              </div>
@@ -211,5 +214,34 @@
 	  </div>
 	</div>
 	<!-- /data keluarga -->
+
+	<script>
+
+		// tambah anak		
+		// saat tombol add-more ditekan, maka akan memunculkan div dengan class copy
+	  //   $(document).ready(function() {
+	  //     $(".add-more").click(function(){ 
+			// var html = $(".copy").html();
+			// $(".after-add-more").after(html);
+	  //     });
+
+	  //     $(".add-more").click(function(){
+	  //     	let tambah = true;
+	  //     	var anak = [];
+	  //     })
+	  //   // saat tombol remove dklik control group akan dihapus 
+			// $(".remove").click(function(){
+			// 	$(".anak").parents().remove()
+			// })
+
+			// $("body").on("click",".remove",function(){ 
+			//   $(this).parents(".anak").remove();
+			// });
+	  //   });
+
+	    // end tambah anak
+
+	</script>
+
 
 </div>

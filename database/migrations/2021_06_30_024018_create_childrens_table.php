@@ -20,6 +20,8 @@ class CreateChildrensTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
 
             $table->string('nama_anak')->nullable();
+
+            $table->timestamps();
         });
     }
 

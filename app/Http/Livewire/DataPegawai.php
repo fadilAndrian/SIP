@@ -23,29 +23,47 @@ class DataPegawai extends Component
 
     public function show($id) {
     	$user = User::findOrFail($id);
-    	$this->nama = $user->name;
     	
-    	$this->nip = $user->profile->nip; 
-    	$this->alamat $user->profile->alamat;
-    	$this->nik $user->profile->nik;
-    	$this->bpjs_kes $user->profile->no_bpjs_kesehatan;
-    	$this->divisi $user->profile->divisi;
-    	$this->bpjs_kerja $user->profile->no_bpjs_ketenagakerjaan;
-    	$this->jabatan $user->profile->jabatan;
-    	$this->kk $user->profile->no_kk;
-    	$this->status_pegawai $user->profile->status_pegawai;
-    	$this->npwp $user->profile->NPWP;
-    	$this->masa_kontrak $user->profile->habis_masa_kontrak;
-    	$this->tgl_lahir $user->profile->tgl_lahir;
-    	$this->tmpt_lahir $user->profile->tempat_lahir;
+    	// Akun
+        $this->nama = $user->name;
+        $this->email = $user->email;
+        $this->password = $user->password;
+        $this->role = $user->role;
 
-    	$this->isShow()
+        // Pegawai
+        $this->nip = $user->nip;
+        $this->alamat = $user->alamat;
+        $this->nik = $user->nik;
+        $this->bpjs_kes = $user->no_bpjs_kesehatan;
+        $this->divisi = $user->divisi;
+        $this->bpjs_kerja = $user->no_bpjs_ketenagakerjaan;
+        $this->jabatan = $user->jabatan;
+        $this->kk = $user->no_kk;
+        $this->status_pegawai = $user->status_pegawai;
+        $this->npwp = $user->NPWP;
+        $this->masa_kontrak = $user->habis_masa_kontrak;
+        $this->tgl_lahir = $user->tgl_lahir;
+        $this->tmpt_lahir = $user->tempat_lahir;
+
+        // Keluarga
+        $this->nama_pasangan = $user->nama_pasangan;
+        $this->ktp_pasangan = $user->nik;
+        $this->tgl_lahir_pasangan = $user->tgl_lahir;
+        $this->tmpt_lahir_pasangan = $user->tempat_lahir;
+        $this->pekerjaan_pasangan = $user->pekerjaan;
+        $this->notlp_pasangan = $user->no_tlp;
+        $this->alamat_pasangan = $user->alamat;
+
+        // Anak
+        $this->nama_anak = $user->nama_anak;   
+
+    	$this->isShow();
     }
 
     public function delete($id) {
     	// dd($id);
-    	// User::findOrFail($id)->delete();
-    	session()->flash('succes', 'Data telah terhapus.');
+    	User::findOrFail($id)->delete();
+    	session()->flash('succes', 'Data telah terhapus');
     }
 
 

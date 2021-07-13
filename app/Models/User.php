@@ -19,6 +19,10 @@ class User extends Authenticatable
         return $this->hasOne(Family::class); 
     }
 
+    public function children() {
+        return $this->hasOne(children::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *

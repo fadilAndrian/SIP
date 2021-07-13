@@ -19,6 +19,8 @@ class CreateIsiAlbumTable extends Migration
 
             $table->unsignedBigInteger('file_id');
             $table->foreign('file_id')->references('id')->on('arsip_file');
+
+            $table->timestamps();
         });
     }
 

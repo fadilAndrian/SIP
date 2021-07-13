@@ -32,6 +32,8 @@ class CreateProfilesTable extends Migration
             $table->string('no_bpjs_ketenagakerjaan')->nullable();
             $table->string('no_kk')->nullable();
             $table->string('NPWP')->nullable();
+
+            $table->timestamps();
         });
     }
 

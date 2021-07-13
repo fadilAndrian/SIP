@@ -26,6 +26,8 @@ class CreateFamiliesTable extends Migration
             $table->string('pekerjaan')->nullable();
             $table->string('no_tlp')->nullable();
             $table->string('alamat')->nullable();
+
+            $table->timestamps();
         });
     }
 

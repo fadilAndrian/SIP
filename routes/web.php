@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\dashboardController;
+use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\DataPegawai;
 use App\Http\Livewire\CreatePegawai;
+use App\Http\Livewire\Login;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +18,9 @@ use App\Http\Livewire\CreatePegawai;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::group(['middleware'=>['auth', 'cekrole:admin']], function(){
 	//
@@ -28,6 +30,7 @@ Route::group(['middleware'=>['auth', 'cekrole:pegawai']], function(){
 	//
 });
 
-Route::get('/dashboard', [dashboardController::class, 'index'])->name('dashboard');
+Route::get('/', Login::class)->name('login');
+Route::get('/dashboard', Dashboard::class)->name('dashboard');
 Route::get('/data-pegawai', DataPegawai::class);
 Route::get('/create-pegawai', CreatePegawai::class);

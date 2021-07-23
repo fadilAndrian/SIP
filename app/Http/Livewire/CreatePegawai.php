@@ -7,13 +7,18 @@ use App\Models\User;
 use App\Models\Profile;
 use App\Models\Family;
 use App\Models\Children;
+use Illuminate\Support\Str;
 
 class CreatePegawai extends Component
 {
 	// public $tambahAnak, $anak=1; 
     // public $searchParam;
+
+    // untuk mematikan fitur show di data-pegawai
+    public $halamanShow=false, $halamanCreate=true;
+
     public $hasRegistered;
-    public $isEditAnak, $isTambahAnak;
+    public $isOpenKeluarga, $isEditAnak, $isTambahAnak;
     public $jmlAnak;
 
     public $user_id, $nama, $password, $email, $role,  $user_idx;
@@ -25,7 +30,7 @@ class CreatePegawai extends Component
     {   
 
         $jmluser = User::all()->count();
-        // dd($jmluser);
+
         // untuk mengatur user_id
         if ($jmluser != 0) {
             $data = User::orderBy('id', 'DESC')->first();
@@ -33,7 +38,7 @@ class CreatePegawai extends Component
             $id = $data->id+1;
         } else {
             $id = 0;
-            $idx =$id-1;
+            $idx = 1;
         }
         // dd($id);
         $this->user_idx = $idx;
@@ -69,12 +74,10 @@ class CreatePegawai extends Component
         ]);
 
         session()->flash('succes', 'User berhasil didaftarkan');
-        $this->openBiodata();
-
-
+        $this->openBiodata();    
     }
 
-    public function storeProfile() {
+    public function storeData() {
         $this->validate([
             'nip' => 'required|numeric',
             'alamat' => 'required|max:255',
@@ -108,10 +111,13 @@ class CreatePegawai extends Component
             'tempat_lahir' => $this->tmpt_lahir
         ]);
 
-        session()->flash('succes', 'Data diri berhasil disimpan');
+        $this->storeKeluarga();
+
+        session()->flash('succes', 'Data-data berhasil disimpan');
     }
 
     public function storeKeluarga() {
+        // Untuk validasi data keluarga
         $this->validate([
             'nama_pasangan' => 'max:255',
             'ktp_pasangan' => 'numeric',
@@ -120,6 +126,7 @@ class CreatePegawai extends Component
             'alamat_pasangan' => 'max:255',
         ]);
 
+        // untuk simpan data keluarga(create dan update)
         Family::updateOrCreate(['id' => $this->family_id], [
             'user_id' => $this->user_idx,
             'nama_pasangan' => $this->nama_pasangan,
@@ -131,7 +138,7 @@ class CreatePegawai extends Component
             'alamat' => $this->alamat_pasangan,
         ]);
 
-        session()->flash('succes', 'Data Keluarga berhasil disimpan');
+        $this->resetAll();
     }
 
     public function storeAnak() {
@@ -140,7 +147,6 @@ class CreatePegawai extends Component
             'nama_anak' => $this->nama_anak,
         ]);
 
-        $this->closeEditAnak();
         $this->closeTambahAnak();
     }
 
@@ -212,6 +218,34 @@ class CreatePegawai extends Component
     // support system
     public function openBiodata() {
         $this->hasRegistered = true;
+
+        // Pegawai
+        $this->nip = "";
+        $this->alamat = "";
+        $this->nik = "";
+        $this->bpjs_kes = "";
+        $this->divisi = "";
+        $this->bpjs_kerja = "";
+        $this->jabatan = "";
+        $this->kk = "";
+        $this->status_pegawai = "";
+        $this->npwp = "";
+        $this->masa_kontrak = "";
+        $this->tgl_lahir = "";
+        $this->tmpt_lahir = "";
+
+        // Keluarga
+        $this->nama_pasangan = "";
+        $this->ktp_pasangan = "";
+        $this->tgl_lahir_pasangan = "";
+        $this->tmpt_lahir_pasangan = "";
+        $this->pekerjaan_pasangan = "";
+        $this->notlp_pasangan = "";
+        $this->alamat_pasangan = "";
+    }
+
+    public function closeBiodata() {
+        $this->hasRegistered = false;
     }
 
     public function openTambahAnak() {
@@ -235,5 +269,47 @@ class CreatePegawai extends Component
     public function cancelEditAnak() {
         $this->user_id = '';
         $this->nama_anak = '';
+    }
+
+    public function generatePass() {
+        // untuk men-generate 6 random string untuk password
+        $generatePass =  Str::random(6);
+        $this->password = $generatePass;
+    }
+
+    public function resetAll() {
+        $this->nama = NULL;
+        $this->email = NULL;
+        $this->password = NULL;
+        $this->role = NULL;
+
+        // Pegawai
+        $this->nip = NULL;
+        $this->alamat = NULL;
+        $this->nik = NULL;
+        $this->bpjs_kes = NULL;
+        $this->divisi = NULL;
+        $this->bpjs_kerja = NULL;
+        $this->jabatan = NULL;
+        $this->kk = NULL;
+        $this->status_pegawai = NULL;
+        $this->npwp = NULL;
+        $this->masa_kontrak = NULL;
+        $this->tgl_lahir = NULL;
+        $this->tmpt_lahir = NULL;
+
+        // Keluarga
+        $this->nama_pasangan = NULL;
+        $this->ktp_pasangan = NULL;
+        $this->tgl_lahir_pasangan = NULL;
+        $this->tmpt_lahir_pasangan = NULL;
+        $this->pekerjaan_pasangan = NULL;
+        $this->notlp_pasangan = NULL;
+        $this->alamat_pasangan = NULL;
+
+        // Anak
+        $this->nama_anak = NULL;
+
+        $this->closeBiodata();
     }
 }

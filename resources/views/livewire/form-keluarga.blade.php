@@ -2,47 +2,47 @@
 
 	<div class="md:grid md:grid-cols-2 md:gap-6">
 	    <div class="mt-5 md:mt-0 md:col-span-2">
-	      <form wire:submit.prevent="#" method="POST">
+	      <form wire:submit.prevent="storeKeluarga()" method="POST">
 	        <div class="overflow-hidden sm:rounded-md">
 	          <div class="px-4 py-5 bg-white sm:p-6">
 	              
             	<div class="grid grid-cols-9 gap-6">
 	              <div class="col-span-6 sm:col-span-4 grid gap-6">
-	              	<input type="hidden" wire:model="family_id">
-	              	<input type="hidden" wire:model="user_idx">
+	              	<input {{ $halamanShow ? 'readonly' : '' }} type="hidden" wire:model="family_id">
+	              	<input {{ $halamanShow ? 'readonly' : '' }} type="hidden" wire:model="user_idx">
 	                <div>
 		                <label class="block text-sm font-medium text-gray-700">Nama Pasangan</label>
-		                <input required type="text" wire:model="nama_pasangan" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full shadow-sm text-sm font-medium rounded-xl outline-none">
+		                <input {{ $halamanShow ? 'readonly' : '' }} type="text" wire:model="nama_pasangan" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full shadow-sm text-sm font-medium rounded-xl outline-none">
 	                </div>
 
 	                <div>
 		                <label class="block text-sm font-medium text-gray-700">Nomor KTP (NIK)</label>
-		                <input required type="text" wire:model="ktp_pasangan" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full shadow-sm text-sm font-medium rounded-xl outline-none">
+		                <input {{ $halamanShow ? 'readonly' : '' }} type="text" wire:model="ktp_pasangan" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full shadow-sm text-sm font-medium rounded-xl outline-none">
 	                </div>
 
 	                <div>
 		                <label class="block text-sm font-medium text-gray-700">Tanggal Lahir</label>
-		                <input required type="text" wire:model="tgl_lahir_pasangan" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full shadow-sm text-sm font-medium rounded-xl outline-none">
+		                <input {{ $halamanShow ? 'readonly' : '' }} type="date" wire:model="tgl_lahir_pasangan" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full shadow-sm text-sm font-medium rounded-xl outline-none">
 	                </div>
 
 	                <div>
 		                <label class="block text-sm font-medium text-gray-700">Tempat Lahir</label>
-		                <input required type="text" wire:model="tmpt_lahir_pasangan" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full shadow-sm text-sm font-medium rounded-xl outline-none">
+		                <input {{ $halamanShow ? 'readonly' : '' }} type="text" wire:model="tmpt_lahir_pasangan" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full shadow-sm text-sm font-medium rounded-xl outline-none">
 	                </div>
 
 	                <div>
 		                <label class="block text-sm font-medium text-gray-700">Pekerjaan</label>
-		                <input required type="text" wire:model="pekerjaan_pasangan" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full shadow-sm text-sm font-medium rounded-xl outline-none">
+		                <input {{ $halamanShow ? 'readonly' : '' }} type="text" wire:model="pekerjaan_pasangan" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full shadow-sm text-sm font-medium rounded-xl outline-none">
 	                </div>
 
 	                <div>
 		                <label class="block text-sm font-medium text-gray-700">Nomor Telepon</label>
-		                <input required type="text" wire:model="notlp_pasangan" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full shadow-sm text-sm font-medium rounded-xl outline-none">
+		                <input {{ $halamanShow ? 'readonly' : '' }} type="text" wire:model="notlp_pasangan" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full shadow-sm text-sm font-medium rounded-xl outline-none">
 	                </div>
 
 	                <div>
 		                <label class="block text-sm font-medium text-gray-700">Alamat</label>
-		                <textarea required type="text" wire:model="alamat_pasangan" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full h-5/6 shadow-sm text-sm font-medium rounded-xl outline-none" style="resize: none;"></textarea>
+		                <textarea type="text" wire:model="alamat_pasangan" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full h-5/6 shadow-sm text-sm font-medium rounded-xl outline-none" style="resize: none;"></textarea>
 	                </div>
 	              </div>
 	              <div class="col-span-6 sm:col-span-1">
@@ -56,25 +56,30 @@
 	              		<div class="mb-6">
 	              			<div class="flex">
 								<label for="first-name" class="mr-auto block text-sm font-medium text-gray-700">Nama Anak {{ $loop->iteration }} </label>
+								@if(!$halamanShow)
 								<a @click="open= !open" wire:click="editAnak({{$x->id}})" style="cursor: pointer;" class="button text-blue-800 hover:text-indigo-400 ml-auto mt-1 focus:text-gray-500">
 								<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 								  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
 								</svg>
 								</a>
+								@endif
 	              			</div>
 	              			<div class="flex">
 
-	              			<input type="text" readonly value="{{$x->nama_anak}}" id="first-name" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full shadow-sm text-sm font-medium rounded-xl outline-none">
+	              			<input {{ $halamanShow ? 'readonly' : '' }} type="text" readonly value="{{$x->nama_anak}}" id="first-name" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full shadow-sm text-sm font-medium rounded-xl outline-none">
+	              			@if(!$halamanShow)
 	              			<!-- delete button -->
 	              			<a wire:click="deleteAnak({{$x->id}})" onclick="confirm('Yakin untuk menghapus?') || event.stopImmediatePropagation()" style="cursor: pointer;" class="button text-red-500 hover:text-red-300 mx-auto mt-2 ml-3 h-6 w-6">
 	              				<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 								  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M18 12H6" />
 								</svg>
 	              			</a>
+	              			@endif
 	              			</div>
 		              	</div>
 		              	@endforeach
 
+		              	@if($isEditAnak)
 					  	<!-- modal edit anak -->
 						<div x-show="open" 
 							 x-transition:enter="transition ease-out duration-300" 
@@ -116,14 +121,14 @@
 						              Edit Nama Anak
 						            </h3>
 						            <div class="mt-5">
-						              <input type="hidden" wire:model="children_id">
-						  			  <input type="text"  wire:model="nama_anak" id="first-name" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full shadow-sm text-sm font-medium rounded-xl outline-none">
+						              <input {{ $halamanShow ? 'readonly' : '' }} type="hidden" wire:model="children_id">
+						  			  <input {{ $halamanShow ? 'readonly' : '' }} type="text" wire:model="nama_anak" id="first-name" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full shadow-sm text-sm font-medium rounded-xl outline-none">
 						            </div>
 						          </div>
 						        </div>
 						      </div>
 						      <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-						        <button type="button" wire:click="storeAnak()" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm">
+						        <button @click="open= !open" type="button" wire:click="storeAnak()" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-600 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm">
 						          Simpan
 						        </button>
 						        <button @click="open= !open" type="button" wire:click="closeEditAnak()" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
@@ -134,6 +139,7 @@
 						  </div>
 						</div>
 					  	<!-- /modal edit anak -->
+					  	@endif
 
 	              	  </div>
 
@@ -199,9 +205,11 @@
 
 	        </div>
 	          <div class="px-4 py-3 text-right sm:px-6">
-	            <button wire:click.prevent="storeKeluarga()" type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+	          	@if(!$halamanShow)
+	            <button wire:click.prevent="storeData()" type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
 	              Simpan
 	            </button>
+	            @endif
 	          </div>
 	      </form>
 	    </div>

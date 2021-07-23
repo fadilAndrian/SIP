@@ -16,7 +16,7 @@
 
    	<style>
    		.sidebar {
-   			box-shadow: 5px 0px 10px rgba(0,0,0,0.4);
+   			box-shadow: 4px 0px 10px rgba(0,0,0,0.4);
    		}
 
    		.btt {
@@ -43,7 +43,7 @@
 </head>
 <body>
 	
-	<div class="h-screen w-full relative">
+	<div class="h-full w-full relative">
 		<!-- navbar -->
 
 		<div class="flex">
@@ -231,7 +231,7 @@
 		    	</div>
 
 		    	<div class="ml-2">
-		    		<a class="hover:text-blue-900 {{'create-pegawai' == Request()->path() ? '' : 'hidden'}}" href="/create-pegawai">{{'create-pegawai' == Request()->path() ? 'Olah Data Pegawai' : ''}}</a>
+		    		<a class="hover:text-blue-900 {{'create-pegawai' == Request()->path() ? '' : 'hidden'}}" href="#">{{'create-pegawai' == Request()->path() ? 'Olah Data Pegawai' : ''}}</a>
 		    	</div>
 		    	<!-- /navigasi menu pada header -->
 

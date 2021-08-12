@@ -48,7 +48,7 @@
 
 		<div class="flex">
 		  <!-- Sidebar -->
-		  <div class="fixed flex flex-col left-0 top-0 w-14 hover:w-64 sm:w-64 bg-blue-900 dark:bg-gray-900 h-full text-white transition-all duration-300 border-none z-10 sidebar">
+		  <div class="fixed flex flex-col left-0 top-0 w-14 hover:w-64 sm:w-64 bg-blue-800 dark:bg-gray-900 h-full text-white transition-all duration-300 border-none z-10 sidebar">
 	        <div class="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
 	          <ul class="flex flex-col py-4 space-y-1">
 	          	<li class="sm:mx-auto sm:text-center pt-8 pb-24 sm:pt-4 sm:pb-10 text-blue-100">
@@ -69,7 +69,7 @@
 	            <!-- Menu Data Pegawai -->
 	            <div @click.away="open=false" x-data="{open: false}">
 	            <li class="py-1 sm:py-2" @click="open=!open">
-	              <div style="cursor: pointer;" :class="{'bg-blue-700 border-blue-400': open, '': !open}" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
+	              <div style="cursor: pointer;" :class="{'bg-blue-700 border-blue-400': open, '': !open}" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-600 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
 	                <span class="inline-flex justify-center items-center ml-4">
 	                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">< <<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" /></svg>
 	                </span>
@@ -88,12 +88,12 @@
 	                  x-transition:leave-start="transform opacity-100 scale-100" 
 	                  x-transition:leave-end="transform opacity-0 scale-95">
 	              	<li>
-	              		<a href="/create-pegawai" class="relative flex flex-row items-center h-8 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
+	              		<a href="/create-pegawai" class="relative flex flex-row items-center h-8 focus:outline-none hover:bg-blue-600 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
 	              			<span class="ml-11 text-sm tracking-wide truncate">Buat Data Pegawai</span>
 	              		</a>
 	              	</li>
 	              	<li>
-	              		<a href="/data-pegawai" class="relative flex flex-row items-center h-8 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
+	              		<a href="/data-pegawai" class="relative flex flex-row items-center h-8 focus:outline-none hover:bg-blue-600 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
 	              			<span class="ml-11 text-sm tracking-wide truncate">Lihat Data Pegawai</span>
 	              		</a>
 	              	</li>
@@ -105,7 +105,7 @@
 		        <!-- Menu Form Cuti -->
 		        <div x-data="{open: false}" @click.away="open= false">
 	            <li class="py-2 sm:py-1" @click="open=!open">
-	              <div style="cursor: pointer;" :class="{'bg-blue-700 border-blue-400': open, '': !open}" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
+	              <div style="cursor: pointer;" :class="{'bg-blue-700 border-blue-400': open, '': !open}" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-600 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
 	                <span class="inline-flex justify-center items-center ml-4">
 	                  <svg class="w-5 h-5" viewBox="0 0 31 35" fill="none" xmlns="http://www.w3.org/2000/svg">
 					    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.56964 32.6666V34.1666C8.56964 34.6269 8.94274 35 9.40297 35H23.327C27.0089 35 29.9936 32.0152 29.9936 28.3333V19.9285C29.9936 19.4683 29.6205 19.0952 29.1603 19.0952H22.4579V21.4285H27.6603V28.3333C27.6603 30.7265 25.7202 32.6666 23.327 32.6666H10.903L8.56964 32.6666Z" fill="white"/>
@@ -132,13 +132,18 @@
 	                  x-transition:leave-start="transform opacity-100 scale-100" 
 	                  x-transition:leave-end="transform opacity-0 scale-95">
 	              	<li>
-	              		<a href="/create-pegawai" class="relative flex flex-row items-center h-8 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
-	              			<span class="ml-11 text-sm tracking-wide truncate">Pengajuan Cuti</span>
+	              		<a href="/ajukan-cuti" class="relative flex flex-row items-center h-8 focus:outline-none hover:bg-blue-600 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
+	              			<span class="ml-11 text-sm tracking-wide truncate">Ajukan Cuti</span>
 	              		</a>
 	              	</li>
 	              	<li>
-	              		<a href="/data-pegawai" class="relative flex flex-row items-center h-8 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
-	              			<span class="ml-11 text-sm tracking-wide truncate">Lihat Data Cuti</span>
+	              		<a href="/data-pegawai" class="relative flex flex-row items-center h-8 focus:outline-none hover:bg-blue-600 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
+	              			<span class="ml-11 text-sm tracking-wide truncate">Lihat Cuti</span>
+	              		</a>
+	              	</li>
+	              	<li>
+	              		<a href="/data-pegawai" class="relative flex flex-row items-center h-8 focus:outline-none hover:bg-blue-600 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
+	              			<span class="ml-11 text-sm tracking-wide truncate">Setuju/Tolak Cuti</span>
 	              		</a>
 	              	</li>
 	              </ul>
@@ -149,7 +154,7 @@
 	            <!-- Menu Form Lembur -->
 	            <div x-data="{open: false}" @click.away="open=false">
 	            <li class="py-2 sm:py-1" @click="open=!open">
-	              <div style="cursor: pointer;" :class="{'bg-blue-700 border-blue-400': open, '': !open}" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
+	              <div style="cursor: pointer;" :class="{'bg-blue-700 border-blue-400': open, '': !open}" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-600 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
 	                <span class="inline-flex justify-center items-center ml-4">
 	                  <svg class="w-5 h-5" viewBox="0 0 31 35" fill="none" xmlns="http://www.w3.org/2000/svg">
 					    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.56964 32.6666V34.1666C8.56964 34.6269 8.94274 35 9.40297 35H23.327C27.0089 35 29.9936 32.0152 29.9936 28.3333V19.9285C29.9936 19.4683 29.6205 19.0952 29.1603 19.0952H22.4579V21.4285H27.6603V28.3333C27.6603 30.7265 25.7202 32.6666 23.327 32.6666H10.903L8.56964 32.6666Z" fill="white"/>
@@ -176,12 +181,12 @@
 	                  x-transition:leave-start="transform opacity-100 scale-100" 
 	                  x-transition:leave-end="transform opacity-0 scale-95">
 	              	<li>
-	              		<a href="/create-pegawai" class="relative flex flex-row items-center h-8 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
+	              		<a href="/create-pegawai" class="relative flex flex-row items-center h-8 focus:outline-none hover:bg-blue-600 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
 	              			<span class="ml-11 text-sm tracking-wide truncate">Pengajuan Lembur</span>
 	              		</a>
 	              	</li>
 	              	<li>
-	              		<a href="/data-pegawai" class="relative flex flex-row items-center h-8 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
+	              		<a href="/data-pegawai" class="relative flex flex-row items-center h-8 focus:outline-none hover:bg-blue-600 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
 	              			<span class="ml-11 text-sm tracking-wide truncate">Lihat Data Lembur</span>
 	              		</a>
 	              	</li>
@@ -192,7 +197,7 @@
 
 	            <!-- Menu Arsip -->
 	            <li class="py-2 sm:py-1">
-	              <a href="#" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
+	              <a href="#" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-600 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
 	                <span class="inline-flex justify-center items-center ml-4">
 	                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" /></svg>
 	                </span>
@@ -220,11 +225,15 @@
 		    	<div class="ml-2">
 		    		<a class="hover:text-blue-900" href="/data-pegawai">{{'data-pegawai' == Request()->path() ? 'Data Pegawai' : ''}}</a>
 		    		<a class="hover:text-blue-900" href="/data-pegawai">{{'create-pegawai' == Request()->path() ? 'Data Pegawai' : ''}}</a>
+		    		<a class="hover:text-blue-900" href="#">{{'ajukan-cuti' == Request()->path() ? 'Form Cuti' : ''}}</a>
+		    		<a class="hover:text-blue-900" href="#">{{'lihat-cuti' == Request()->path() ? 'Form Cuti' : ''}}</a>
+		    		<a class="hover:text-blue-900" href="#">{{'perizinan-cuti' == Request()->path() ? 'Form Cuti' : ''}}</a>
 		    	</div>
 
 		    	<div class="ml-2 mt-0.5 
 		    				{{'data-pegawai' == Request()->path() ? 'hidden' : ''}} 
-		    				{{'dashboard' == Request()->path() ? 'hidden' : ''}}">
+		    				{{'dashboard' == Request()->path() ? 'hidden' : ''}}
+		    				{{'lihat-cuti' == Request()->path() ? 'hidden' : ''}}">
 		    		<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 					  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7" />
 					</svg>
@@ -232,6 +241,7 @@
 
 		    	<div class="ml-2">
 		    		<a class="hover:text-blue-900 {{'create-pegawai' == Request()->path() ? '' : 'hidden'}}" href="#">{{'create-pegawai' == Request()->path() ? 'Olah Data Pegawai' : ''}}</a>
+		    		<a class="hover:text-blue-900 {{'ajukan-cuti' == Request()->path() ? '' : 'hidden'}}" href="#">{{'ajukan-cuti' == Request()->path() ? 'Ajukan Cuti' : ''}}</a>
 		    	</div>
 		    	<!-- /navigasi menu pada header -->
 
@@ -240,7 +250,7 @@
 		    <div class="justify-between py-2 text-lg font-medium text-gray-800">
 		    	<div @mouseleave="open = false" x-data="{open: false}">
 			    	<a href="#" @mouseover="open = true" class="hover:text-blue-800 flex">
-			    	<svg xmlns="http://www.w3.org/2000/svg" :class="{'opacity-0':open, 'transition-opacity opacity-100 duration-700':!open}" class="self-center mx-2 h-6 w-6  transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+			    	<svg xmlns="http://www.w3.org/2000/svg" :class="{'opacity-0':open, 'transition-opacity opacity-100 duration-700':!open}" class="self-center mr-3 h-6 w-6  transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 					  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
 					</svg>
 					<div x-show="open"

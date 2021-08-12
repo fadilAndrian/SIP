@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\DataPegawai;
 use App\Http\Livewire\CreatePegawai;
+use App\Http\Livewire\CutiAjukan;
 use App\Http\Livewire\Login;
 
 
@@ -34,3 +35,4 @@ Route::get('/', Login::class)->name('login');
 Route::get('/dashboard', Dashboard::class)->name('dashboard');
 Route::get('/data-pegawai', DataPegawai::class);
 Route::get('/create-pegawai', CreatePegawai::class);
+Route::get('/ajukan-cuti', CutiAjukan::class);

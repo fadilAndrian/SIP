@@ -16,7 +16,7 @@
 			<img src="img/logo-unisia.png" class="mx-auto mt-10">
 			<p class="text-3xl font-bold text-blue-800 mt-10">SISTEM INFORMASI PEGAWAI UNISIA</p>
 			@yield('content')
-			<div class="absolute bottom-5 mx-auto text-center w-5/12">
+			<div class="absolute bottom-5 text-center w-5/12">
 				<p class="text-xs font-light text-gray-600">
 					copyright © 2021 bank syariah unisia insan indonesia
 				</p>

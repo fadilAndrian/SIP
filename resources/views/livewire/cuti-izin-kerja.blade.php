@@ -11,7 +11,7 @@
 	      	
 	      	<div class="ml-auto self-center">
 		      	<!-- back button -->
-		  		<a @click="menu= true, besar= false" style="cursor: pointer;">
+		  		<a @click="menu= true, izin= false" style="cursor: pointer;">
 		  		<div class="flex text-gray-700 self-center">
 		      		<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mr-3 transform hover:text-gray-600 hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 					  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z" />
@@ -111,7 +111,7 @@
 	  	<div class="text-gray-700 text-3xl mb-1 font-bold">
       		<div class="flex">
       			<div class="mr-auto">
-      			Cuti Tahunan (CT) atau Cuti Besar (CB)
+      			Izin Tidak Masuk Kerja & Meninggalkan Kantor
       			</div>
       		</div>
       	</div>      	
@@ -128,108 +128,71 @@
 	          <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
 
 	            <div class="grid grid-cols-9 gap-6">
-	              <div class="col-span-6 sm:col-span-4">
-	                <label class="block text-sm font-medium text-gray-700">Tahun Periode Cuti Tahunan (CT)<span></label>
-	                <input required type="text" wire:model="tahun_periode_CT" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full shadow-sm text-sm font-medium rounded-xl outline-none">
-	                @error('tahun_periode_CT') 
-					    <div class="text-sm font-medium text-red-500">{{ $message }}</div>
-					@enderror
+	              <div class="col-span-6 sm:col-span-4 block">
+	                <label class="block text-sm font-medium text-gray-700">Jenis Izin<span></label>
+	                	<div class="flex my-2 items-center">
+	                		<input id="pernikahan_karyawan" name="jenis_izin" value="Pernikahan Karyawan" type="radio" wire:model="jenis_izin"><label for="pernikahan_karyawan" class="ml-8 text-md font-medium text-gray-600">Pernikahan Karyawan</label>
+	                	</div>
+	                	<div class="flex my-2 items-center">
+	                		<input id="pernikahan_anak" name="jenis_izin" value="Pernikahan Anak" type="radio" wire:model="jenis_izin"><label for="pernikahan_anak" class="ml-8 text-md font-medium text-gray-600">Pernikahan Anak</label>
+	                	</div>
+	                	<div class="flex my-2 items-center">
+	                		<input id="kematian" name="jenis_izin" value="Kematian " type="radio" wire:model="jenis_izin"><label for="kematian" class="ml-8 text-md font-medium text-gray-600">Kematian</label><input type="text" wire:model="ket_kematian" class="mt-1 border-b border-gray-300 my-auto px-1 mx-1 focus:border-none block w-1/3 text-md border-gray-300 text-gray-600 font-medium outline-none">
+	                	</div>
+	                	<div class="flex my-2 items-center">
+	                		<input id="musibah" name="jenis_izin" value="Musibah " type="radio" wire:model="jenis_izin"><label for="musibah" class="ml-8 text-md font-medium text-gray-600">Musibah</label><input type="text" wire:model="ket_musibah" class="mt-1 border-b border-gray-300 my-auto px-1 mx-1 focus:border-none block w-1/3 text-md border-gray-300 text-gray-600 font-medium outline-none">
+	                	</div>
+	                	<div class="flex my-2 items-center">
+	                		<input id="istri_melahirkan" name="jenis_izin" value="Istri Melahirkan" type="radio" wire:model="jenis_izin"><label for="istri_melahirkan" class="ml-8 text-md font-medium text-gray-600">Istri Melahirkan</label>
+	                	</div>
+	                	<div class="flex my-2 items-center">
+	                		<input id="khitanan" name="jenis_izin" value="Anak Khitanan" type="radio" wire:model="jenis_izin"><label for="khitanan" class="ml-8 text-md font-medium text-gray-600">Anak Khitanan</label>
+	                	</div>
+	                	<div class="flex my-2 items-center">
+	                		<input id="haji" name="jenis_izin" value="Ibadah Haji" type="radio" wire:model="jenis_izin"><label for="haji" class="ml-8 text-md font-medium text-gray-600">Ibadah Haji</label>
+	                	</div>
+	                	<div class="flex my-2 items-center">
+	                		<input id="umroh" name="jenis_izin" value="Ibadah Umroh" type="radio" wire:model="jenis_izin"><label for="umroh" class="ml-8 text-md font-medium text-gray-600">Ibadah Umroh</label>
+	                	</div>
+	                	<div class="flex my-2 items-center">
+	                		<input id="lainnya" name="jenis_izin" value="Lainnya" type="radio" wire:model="jenis_izin"><label for="lainnya" class="ml-8 text-md font-medium text-gray-600">Lainnya</label>
+	                	</div>
 	              </div>
 	              <div class="col-span-6 sm:col-span-1">
 	              </div>
-	              <div class="col-span-6 sm:col-span-4">
-	                <label for="first-name" class="block text-sm font-medium text-gray-700">Jumlah hari Cuti yang diambil (CT)<span></label>
-	                <input required type="text" wire:model="jumlah_cuti_CT" id="first-name" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full shadow-sm text-sm font-medium rounded-xl outline-none">
-	                @error('jumlah_cuti_CT') 
-					    <div class="text-sm font-medium text-red-500">{{ $message }}</div>
-					@enderror
-	              </div>
-	            </div>
+	              <div class="grid col-span-6 sm:col-span-4 gap-6">
+	              	<div>
+		                <label for="first-name" class="block text-sm font-medium text-gray-700">Tanggal Mulai Izin<span></label>
+		                <input required type="date" wire:model="tgl_mulai_izin" id="first-name" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full shadow-sm text-sm font-medium rounded-xl outline-none">
+		                @error('tgl_mulai_izin') 
+						    <div class="text-sm font-medium text-red-500">{{ $message }}</div>
+						@enderror
+	              	</div>
 
-	            <div class="grid grid-cols-9 gap-6">
-	              <div class="col-span-6 sm:col-span-4">
-	                <label class="block text-sm font-medium text-gray-700">Tahun Periode Cuti Besar (CB)<span></label>
-	                <input required type="text" wire:model="tahun_periode_CB" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full shadow-sm text-sm font-medium rounded-xl outline-none">
-	                @error('tahun_periode_CB') 
-					    <div class="text-sm font-medium text-red-500">{{ $message }}</div>
-					@enderror
-	              </div>
-	              <div class="col-span-6 sm:col-span-1">
-	              </div>
-	              <div class="col-span-6 sm:col-span-4">
-	                <label for="first-name" class="block text-sm font-medium text-gray-700">Jumlah hari Cuti yang diambil (CB)<span></label>
-	                <input required type="text" wire:model="jumlah_cuti_CB" id="first-name" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full shadow-sm text-sm font-medium rounded-xl outline-none">
-	                @error('jumlah_cuti_CB') 
-					    <div class="text-sm font-medium text-red-500">{{ $message }}</div>
-					@enderror
-	              </div>
-	            </div>
+	              	<div class="gap-6">
+		                <label for="first-name" class="block text-sm font-medium text-gray-700">Tanggal Berakhirnya Izin<span></label>
+		                <input required type="date" wire:model="tgl_akhir_izin" id="first-name" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full shadow-sm text-sm font-medium rounded-xl outline-none">
+		                @error('tgl_mulai_izin') 
+						    <div class="text-sm font-medium text-red-500">{{ $message }}</div>
+						@enderror
+	              	</div>
 
-	            <div class="grid grid-cols-9 gap-6">
-	              <div class="col-span-6 sm:col-span-4">
-	                <label class="block text-sm font-medium text-gray-700">Sisa Jumlah Hari Sebelum Cuti Tahunan (CT)<span></label>
-	                <input required type="text" wire:model="sisa_sebelum_CT" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full shadow-sm text-sm font-medium rounded-xl outline-none">
-	                @error('sisa_sebelum_CT') 
-					    <div class="text-sm font-medium text-red-500">{{ $message }}</div>
-					@enderror
-	              </div>
-	              <div class="col-span-6 sm:col-span-1">
-	              </div>
-	              <div class="col-span-6 sm:col-span-4">
-	                <label for="first-name" class="block text-sm font-medium text-gray-700">Sisa Jumlah Hari Setelah Cuti Tahunan (CT)<span></label>
-	                <input required type="text" wire:model="sisa_setelah_CT" id="first-name" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full shadow-sm text-sm font-medium rounded-xl outline-none">
-	                @error('sisa_setelah_CT') 
-					    <div class="text-sm font-medium text-red-500">{{ $message }}</div>
-					@enderror
-	              </div>
-	            </div>
+		            <div class="gap-6">
+		                <label for="first-name" class="block text-sm font-medium text-gray-700">Jumlah Hari Izin<span></label>
+		                <input required type="number" wire:model="jumlah_izin" id="first-name" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full shadow-sm text-sm font-medium rounded-xl outline-none">
+		                @error('jumlah_izin') 
+						    <div class="text-sm font-medium text-red-500">{{ $message }}</div>
+						@enderror
+	              	</div>
 
-	            <div class="grid grid-cols-9 gap-6">
-	              <div class="col-span-6 sm:col-span-4">
-	                <label class="block text-sm font-medium text-gray-700">Sisa Jumlah Hari Sebelum Cuti Besar (CB)<span></label>
-	                <input required type="text" wire:model="sisa_sebelum_CB" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full shadow-sm text-sm font-medium rounded-xl outline-none">
-	                @error('sisa_sebelum_CB') 
-					    <div class="text-sm font-medium text-red-500">{{ $message }}</div>
-					@enderror
-	              </div>
-	              <div class="col-span-6 sm:col-span-1">
-	              </div>
-	              <div class="col-span-6 sm:col-span-4">
-	                <label for="first-name" class="block text-sm font-medium text-gray-700">Sisa Jumlah Hari Setelah Cuti Besar (CB)<span></label>
-	                <input required type="text" wire:model="sisa_setelah_CB" id="first-name" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full shadow-sm text-sm font-medium rounded-xl outline-none">
-	                @error('sisa_setelah_CB') 
-					    <div class="text-sm font-medium text-red-500">{{ $message }}</div>
-					@enderror
-	              </div>
-	            </div>
+	              	<div class="gap-6">
+		                <label for="first-name" class="block text-sm font-medium text-gray-700">Tanggal Mulai Bekerja Kembali<span></label>
+		                <input required type="date" wire:model="tgl_mulai_kerja" id="first-name" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full shadow-sm text-sm font-medium rounded-xl outline-none">
+		                @error('tgl_mulai_kerja') 
+						    <div class="text-sm font-medium text-red-500">{{ $message }}</div>
+						@enderror
+	              	</div>
 
-	            <div class="grid grid-cols-9 gap-6">
-	              <div class="col-span-6 sm:col-span-4">
-	                <label class="block text-sm font-medium text-gray-700">Tanggal Mulai Cuti<span></label>
-	                <input required type="date" wire:model="tgl_mulai_cuti" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full shadow-sm text-sm font-medium rounded-xl outline-none">
-	                @error('tgl_mulai_cuti') 
-					    <div class="text-sm font-medium text-red-500">{{ $message }}</div>
-					@enderror
-	              </div>
-	            </div>
-
-	            <div class="grid grid-cols-9 gap-6">
-	              <div class="col-span-6 sm:col-span-4">
-	                <label for="first-name" class="block text-sm font-medium text-gray-700">Tanggal Akhir Cuti<span></label>
-	                <input required type="date" wire:model="tgl_akhir_cuti" id="first-name" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full shadow-sm text-sm font-medium rounded-xl outline-none">
-	                @error('tgl_akhir_cuti') 
-					    <div class="text-sm font-medium text-red-500">{{ $message }}</div>
-					@enderror
-	              </div>
-	            </div>
-
-	            <div class="grid grid-cols-9 gap-6">
-	              <div class="col-span-6 sm:col-span-4">
-	                <label for="first-name" class="block text-sm font-medium text-gray-700">Tanggal Mulai Bekerja Kembali<span></label>
-	                <input required type="date" wire:model="tgl_mulai_kerja" id="first-name" autocomplete="given-name" class="mt-1 border py-2 px-3 border-gray-300 focus:border-blue-500 focus:ring-blue-500 block w-full shadow-sm text-sm font-medium rounded-xl outline-none">
-	                @error('tgl_mulai_kerja') 
-					    <div class="text-sm font-medium text-red-500">{{ $message }}</div>
-					@enderror
 	              </div>
 	            </div>
 

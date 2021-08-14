@@ -15,6 +15,10 @@
    	@livewireStyles
 
    	<style>
+   		html {
+   			scroll-behavior: smooth;
+   		}
+
    		.sidebar {
    			box-shadow: 4px 0px 10px rgba(0,0,0,0.4);
    		}

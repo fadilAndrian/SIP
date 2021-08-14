@@ -6,10 +6,24 @@ use Livewire\Component;
 
 class CutiAjukan extends Component
 {
+	public $hideMenu=0;
+
     public function render()
     {
-        return view('livewire.cuti-besar')
+        return view('livewire.cuti-ajukan')
         ->extends('layouts.layout')
         ->section('content');
     }
+
+
+
+
+
+
+
+
+
+
+    // fungsi untuk fitur
+    
 }
